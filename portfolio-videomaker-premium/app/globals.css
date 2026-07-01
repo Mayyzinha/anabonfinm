@@ -1,0 +1,112 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #0b0b0b;
+  --foreground: #f7f2e8;
+  --gold: #ffc300;
+  --panel: #121212;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  background: var(--background);
+}
+
+body {
+  margin: 0;
+  background:
+    radial-gradient(circle at 80% 10%, rgba(255, 195, 0, 0.12), transparent 28rem),
+    radial-gradient(circle at 10% 45%, rgba(255, 255, 255, 0.055), transparent 28rem),
+    var(--background);
+  color: var(--foreground);
+  overflow-x: hidden;
+  cursor: none;
+}
+
+button,
+a,
+input,
+textarea,
+select {
+  cursor: none;
+}
+
+::selection {
+  background: rgba(255, 195, 0, 0.28);
+  color: #fff;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: #080808;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 195, 0, 0.5);
+  border-radius: 999px;
+}
+
+.noise::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 180 180' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+}
+
+.container-px {
+  @apply px-5 sm:px-8 lg:px-12;
+}
+
+.section-y {
+  @apply py-20 sm:py-24 lg:py-32;
+}
+
+.text-balance {
+  text-wrap: balance;
+}
+
+.glass-panel {
+  @apply border border-white/10 bg-white/[0.035] backdrop-blur-xl;
+}
+
+.gold-line {
+  background: linear-gradient(90deg, transparent, rgba(255, 195, 0, 0.9), transparent);
+}
+
+.mask-fade {
+  mask-image: linear-gradient(to bottom, black 72%, transparent 100%);
+}
+
+@media (max-width: 768px) {
+  body,
+  button,
+  a,
+  input,
+  textarea,
+  select {
+    cursor: auto;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
+}
